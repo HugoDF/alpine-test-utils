@@ -19,6 +19,7 @@ const getComponents = (markup) => {
 };
 
 /**
+ * Load markup from a file asynchronously using a path.
  *
  * @param {string} filePath - Path to the HTML/template file to load components from
  * @returns {Promise<Array<string>|string>}
@@ -29,23 +30,35 @@ async function load(filePath) {
 }
 
 /**
+ * Load markup from a file **synchronously** using a path.
  *
  * @param {string} filePath - Path to the HTML/template file to load components from
  * @returns {Array<string>|string}
  */
 function loadSync(filePath) {
   console.warn(
-    'alpine-test-utils: loadSync() can cause performance issues, prefer "load()"'
+    'alpine-test-utils: loadSync() can cause performance issues, prefer async "load()"'
   );
   const markup = fs.readFileSync(filePath, 'utf-8');
   return getComponents(markup);
 }
 
 /**
+ * @typedef AlpineProps
+ * @type {object}
+ * @property {object} $data - Alpine.js data reference
+ * @property {Element} $el - Root element reference
+ * @property {Function} $nextTick - Wait for a render/async operation to complete
+ *
+ * @typedef {Element|AlpineProps} AlpineElement
+ */
+
+/**
+ * Render Alpine.js Component Markup to JSDOM & initialise Alpine.js.
  *
  * @param {string} markup - Component HTML content
  * @param {object|string} [data] - Override x-data for component
- * @returns {Element}
+ * @returns {AlpineElement}
  */
 function render(markup, data) {
   if (typeof markup !== 'string') {
@@ -54,7 +67,7 @@ function render(markup, data) {
     );
   }
 
-  // Create new document from html
+  // Create new window/document from html
   const {window} = new JSDOM(markup);
   const {document} = window;
 
@@ -80,7 +93,7 @@ function render(markup, data) {
 }
 
 /**
- * Function to wait until a render/async operation happens
+ * Function to wait until a render/async operation complete
  * @returns {Promise<void>}
  */
 async function $nextTick() {
@@ -90,8 +103,7 @@ async function $nextTick() {
 
 module.exports = {
   setMutationObserver,
-  // Don't really want to, but it's a good
-  // constrained escape
+  // I don't like exporting this, but it's a good escape hatch
   setGlobal,
   load,
   loadSync,

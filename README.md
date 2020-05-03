@@ -1,4 +1,5 @@
-![Build](https://github.com/HugoDF/buttondown/workflows/Build%20&%20test/badge.svg)
+![test](https://github.com/HugoDF/alpine-test-utils/workflows/test/badge.svg)
+# Alpine.js Test Utils
 
 Utilities for testing Alpine.js components.
 
@@ -8,7 +9,6 @@ This project is not officially affiliated with Alpine.js, it's maintained by com
 
 # Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Install Package](#install-package)
@@ -94,7 +94,8 @@ If you are interested in the future direction of this project, please take a loo
 
 > Equivalent `npm run <script>` should also work
 
-- `yarn test` run tests with [ava](https://github.com/avajs/ava). 
+- `yarn test` run tests with [ava](https://github.com/avajs/ava).
+- `yarn build` will run JSDoc -> TypeScript typing conversion with [jsdoc](https://github.com/jsdoc/jsdoc) and [tsd-jsdoc](https://github.com/englercj/tsd-jsdoc), changes to [./types.d.ts](./types.d.ts) shoud be committed.
 - `yarn lint` will lint all of the files with [xo](https://github.com/xojs/xo)
 - `yarn format` will run lint with `--fix` option on all the examples files (and tests).
 - `yarn release`, run clean, production build and release with `np`.
@@ -111,6 +112,8 @@ Special thanks to:
 - The developers behind
   - [Alpine.js](https://github.com/alpinejs/alpine)
   - [ava](https://avajs.dev)
+  - [jsdoc](https://github.com/jsdoc/jsdoc)
+  - [tsd-jsdoc](https://github.com/englercj/tsd-jsdoc)
   - [esm](https://github.com/standard-things/esm#readme)
   - [np](https://github.com/sindresorhus/np#readme)
   - [xo](https://github.com/xojs/xo#readme)

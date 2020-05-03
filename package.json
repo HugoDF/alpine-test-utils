@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "source": "src/main.js",
   "main": "src/main.js",
-  "//types": "dist/main.d.ts",
+  "types": "types.d.ts",
   "keywords": [
     "alpinejs",
     "testing",
@@ -15,9 +15,10 @@
   ],
   "scripts": {
     "test": "ava",
+    "build": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
     "lint": "xo src tests",
     "format": "xo src tests --fix",
-    "release": "np"
+    "release": "yarn build && np"
   },
   "peerDependencies": {
     "alpinejs": "^2.3.1"
@@ -29,7 +30,9 @@
     "alpinejs": "^2.3.1",
     "ava": "^3.7.0",
     "esm": "^3.2.25",
+    "jsdoc": "^3.6.4",
     "np": "^6.2.1",
+    "tsd-jsdoc": "^2.5.0",
     "xo": "^0.30.0"
   },
   "xo": {

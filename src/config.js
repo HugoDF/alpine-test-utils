@@ -37,6 +37,8 @@ function setMutationObserver(mutationObserver) {
 
 /**
  * Pre-Alpine.start() setup work.
+ *
+ * @returns {void}
  */
 function config() {
   // These need to happen before Alpine.js loads
