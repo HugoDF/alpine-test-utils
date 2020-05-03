@@ -2,7 +2,7 @@
 
 Utilities for testing Alpine.js components.
 
-**This library allows you to quickly and easily write tests for Alpine.js applications via Node.js using any testing library.**
+**This library allows you to quickly and easily write tests for Alpine.js applications via Node.js using _any testing library_.**
 
 This project is not officially affiliated with Alpine.js, it's maintained by community members. For any feedback, questions or issues, please create [issues](https://github.com/HugoDF/alpine-test-utils/issues) and [pull requests](https://github.com/HugoDF/alpine-test-utils/blob/master/README.md#contributing) or merely upvote or comment on existing issues or pull requests.
 
@@ -12,7 +12,8 @@ This project is not officially affiliated with Alpine.js, it's maintained by com
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Install Package](#install-package)
-- [Quick Start, Create a Draft](#quick-start-create-a-draft)
+  - [Peer Dependencies](#peer-dependencies)
+- [Quick Start, Write your first test](#quick-start-write-your-first-test)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
   - [Requirements](#requirements)
@@ -42,28 +43,30 @@ You may also use [yarn](https://yarnpkg.com/en/) to install.
 yarn add --dev alpine-test-utils
 ```
 
-> **Note**: if you're using Alpine.js from CDN you will also need to install it using npm or Yarn
+## Peer Dependencies
+
+**IMPORTANT**: If you're loading Alpine.js from CDN (using a `script` tag) you'll need to install `alpinejs` in order to use `alpine-test-utils`. It should be the same version as the version of Alpine.js you are loading from CDN. using.
 
 ```sh
-npm install --save alpinejs
+npm install --save-dev alpinejs
 # or for Yarn users
-yarn add alpinejs
+yarn add --dev alpinejs
 ```
 
 <a name="quick-start"></a>
-# Quick Start, Create a Draft
+# Quick Start, Write your first test
 
 Here's an example to render an Alpine.js component that's situated in the `test.html` file:
 
 ```js
-import {load, render} from 'alpine-test-utils';
+import {render} from 'alpine-test-utils';
 
-test('render and override x-data', () => {
+test('test foo component', () => {
   const componentHtml = `<div x-data="{foo: 'hello'}">
     <span x-text="foo"></span>
   </div>`
-  const component = render(componentHtml, { foo: 'world' });
-  expect(component.querySelector('span').innerText).toEqual('world');
+  const component = render(componentHtml);
+  expect(component.querySelector('span').innerText).toEqual('bar');
 });
 ```
 
@@ -85,16 +88,13 @@ If you are interested in the future direction of this project, please take a loo
 
 1. Clone the repository
 2. Run `yarn` or `npm install` installs all required dependencies.
-3. Run `yarn build` to build from TypeScript to common JavaScript distribution formats.
-4. Run `yarn test` to run all tests :D.
+3. Run `yarn test` to run all tests :D.
 
 ## npm scripts
 
 > Equivalent `npm run <script>` should also work
 
-- `yarn test` run tests against **built output** with [ava](https://github.com/avajs/ava). **Important**: runs against build output so run `yarn build` beforehand.
-- `yarn build` run build from TypeScript to UMD, CJS, ESM with [microbundle](https://github.com/developit/microbundle)
-- `yarn watch` runs build in watch mode with [microbundle](https://github.com/developit/microbundle)
+- `yarn test` run tests with [ava](https://github.com/avajs/ava). 
 - `yarn lint` will lint all of the files with [xo](https://github.com/xojs/xo)
 - `yarn format` will run lint with `--fix` option on all the examples files (and tests).
 - `yarn release`, run clean, production build and release with `np`.
@@ -109,9 +109,9 @@ This package is maintained by Hugo from [Code with Hugo](https://codewithhugo.co
 Special thanks to:
 
 - The developers behind
+  - [Alpine.js](https://github.com/alpinejs/alpine)
   - [ava](https://avajs.dev)
   - [esm](https://github.com/standard-things/esm#readme)
-  - [microbundle](https://github.com/developit/microbundle#readme)
   - [np](https://github.com/sindresorhus/np#readme)
   - [xo](https://github.com/xojs/xo#readme)
 
