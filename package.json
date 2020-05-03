@@ -1,7 +1,7 @@
 {
   "name": "alpine-test-utils",
   "description": "Utilities for testing Alpine.js components",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "source": "src/main.js",
   "main": "src/main.js",
   "//types": "dist/main.d.ts",
@@ -17,8 +17,7 @@
     "test": "ava",
     "lint": "xo src tests",
     "format": "xo src tests --fix",
-    "prepack": "rm -rf dist && yarn build",
-    "release": "yarn prepack && source .env && np"
+    "release": "np"
   },
   "peerDependencies": {
     "alpinejs": "^2.3.1"
