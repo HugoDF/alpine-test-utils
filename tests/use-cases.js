@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load, render, setGlobal} from '../src/main';
+import {load, loadSync, render, setGlobal} from '../src/main';
 
 test('use-case - clicking a button to toggle visibility', async (t) => {
   const component = render(`<div x-data="{ isOpen: false }">
@@ -42,16 +42,32 @@ test('use-case - intercepting fetch calls', async (t) => {
   t.is(textNodes[1].innerText, 'data-2');
 });
 
-test('use-case - PHP template', async (t) => {
+test('use-case - PHP template - async', async (t) => {
   const markup = await load(path.join(__dirname, '../fixtures/template.php'));
-  // overwrite `x-data` since it's set by a PHP expression
+  // Overwrite `x-data` since it's set by a PHP expression
   const component = render(markup, {
     foo: 'baz'
   });
   t.is(component.querySelector('span').innerText, 'baz');
-})
-test('use-case - load from HTML file', async (t) => {
+});
+
+test('use-case - PHP template - sync', (t) => {
+  const markup = loadSync(path.join(__dirname, '../fixtures/template.php'));
+  // Overwrite `x-data` since it's set by a PHP expression
+  const component = render(markup, {
+    foo: 'baz'
+  });
+  t.is(component.querySelector('span').innerText, 'baz');
+});
+
+test('use-case - load from HTML file - async', async (t) => {
   const markup = await load(path.join(__dirname, '../fixtures/template.html'));
   const component = render(markup);
   t.is(component.querySelector('span').innerText, 'bar');
-})
+});
+
+test('use-case - load from HTML file - sync', (t) => {
+  const markup = loadSync(path.join(__dirname, '../fixtures/template.html'));
+  const component = render(markup);
+  t.is(component.querySelector('span').innerText, 'bar');
+});

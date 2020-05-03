@@ -10,18 +10,35 @@ config();
 
 const Alpine = require('alpinejs');
 
+const getComponents = (markup) => {
+  const {document} = new JSDOM(markup).window;
+  const components = [...document.querySelectorAll('[x-data]')].map(
+    (element) => element.outerHTML
+  );
+  return components.length === 1 ? components[0] : components;
+};
+
 /**
  *
  * @param {string} filePath - Path to the HTML/template file to load components from
  * @returns {Promise<Array<string>|string>}
  */
 async function load(filePath) {
-  const file = await readFile(filePath, 'utf-8');
-  const {document} = new JSDOM(file).window;
-  const components = [...document.querySelectorAll('[x-data]')].map(
-    (element) => element.outerHTML
+  const markup = await readFile(filePath, 'utf-8');
+  return getComponents(markup);
+}
+
+/**
+ *
+ * @param {string} filePath - Path to the HTML/template file to load components from
+ * @returns {Array<string>|string}
+ */
+function loadSync(filePath) {
+  console.warn(
+    'alpine-test-utils: loadSync() can cause performance issues, prefer "load()"'
   );
-  return components.length === 1 ? components[0] : components;
+  const markup = fs.readFileSync(filePath, 'utf-8');
+  return getComponents(markup);
 }
 
 /**
@@ -32,8 +49,11 @@ async function load(filePath) {
  */
 function render(markup, data) {
   if (typeof markup !== 'string') {
-    throw new Error('alpine-test-utils render(): "markup" should be a string');
+    throw new TypeError(
+      'alpine-test-utils render(): "markup" should be a string'
+    );
   }
+
   // Create new document from html
   const {window} = new JSDOM(markup);
   const {document} = window;
@@ -74,5 +94,6 @@ module.exports = {
   // constrained escape
   setGlobal,
   load,
+  loadSync,
   render
 };

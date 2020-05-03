@@ -63,5 +63,8 @@ test('render throws if passed a Promise (eg. forgot to await load())', async (t)
   const error = await t.throws(() => {
     render(Promise.resolve('<div x-data=""></div>'));
   });
-  t.is(error.message, 'alpine-test-utils render(): "markup" should be a string');
-})
+  t.is(
+    error.message,
+    'alpine-test-utils render(): "markup" should be a string'
+  );
+});
