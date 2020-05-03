@@ -1,13 +1,80 @@
 ![Build](https://github.com/HugoDF/buttondown/workflows/Build%20&%20test/badge.svg)
 
-microbundle-ts-pkg: A TypeScript npm package skeleton/starter project with microbundle, AVA and XO
+Utilities for testing Alpine.js components.
 
-Comes with:
+**This library allows you to quickly and easily write tests for Alpine.js applications via Node.js using any testing library.**
 
-- [SAMPLE_README.md](./SAMPLE_README.md) and [USE_CASES.md](./USE_CASES.md) for documentation.
-- AVA for testing (see [./tests](./tests))
-- XO for linting/formatting
-- microbundle for compiling TypeScript to UMD, ESM, CJS
+This project is not officially affiliated with Alpine.js, it's maintained by community members. For any feedback, questions or issues, please create [issues](https://github.com/HugoDF/alpine-test-utils/issues) and [pull requests](https://github.com/HugoDF/alpine-test-utils/blob/master/README.md#contributing) or merely upvote or comment on existing issues or pull requests.
+
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Install Package](#install-package)
+- [Quick Start, Create a Draft](#quick-start-create-a-draft)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [npm scripts](#npm-scripts)
+- [About](#about)
+  - [Acknowledgments](#acknowledgments)
+- [LICENSE](#license)
+
+# Installation
+
+## Prerequisites
+
+- Node.js version 10 or 12
+
+## Install Package
+
+The following recommended installation requires [npm](https://npmjs.org/). If you are unfamiliar with npm, see the [npm docs](https://npmjs.org/doc/). Npm comes installed with Node.js since node version 0.8.x, therefore, you likely already have it.
+
+```sh
+npm install --save-dev alpine-test-utils
+```
+
+You may also use [yarn](https://yarnpkg.com/en/) to install.
+
+```sh
+yarn add --dev alpine-test-utils
+```
+
+> **Note**: if you're using Alpine.js from CDN you will also need to install it using npm or Yarn
+
+```sh
+npm install --save alpinejs
+# or for Yarn users
+yarn add alpinejs
+```
+
+<a name="quick-start"></a>
+# Quick Start, Create a Draft
+
+Here's an example to render an Alpine.js component that's situated in the `test.html` file:
+
+```js
+import {load, render} from 'alpine-test-utils';
+
+test('render and override x-data', () => {
+  const componentHtml = `<div x-data="{foo: 'hello'}">
+    <span x-text="foo"></span>
+  </div>`
+  const component = render(componentHtml, { foo: 'world' });
+  expect(component.querySelector('span').innerText).toEqual('world');
+});
+```
+
+For more complex use cases, please see [USE_CASES.md](./USE_CASES.md).
+
+
+# Roadmap
+
+If you are interested in the future direction of this project, please take a look at the open [issues](https://github.com/HugoDF/microbundle-ts-pkg/issues) and [pull requests](https://github.com/HugoDF/microbundle-ts-pkg/pulls). I would love to hear your feedback!
+
+# Contributing
 
 ## Requirements
 

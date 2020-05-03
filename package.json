@@ -1,33 +1,35 @@
 {
-  "name": "microbundle-ts-pkg",
-  "description": "A TypeScript npm package skeleton/starter project with microbundle, AVA and XO",
+  "name": "alpine-test-utils",
+  "description": "Utilities for testing Alpine.js components",
   "version": "0.0.1",
-  "source": "src/main.ts",
-  "main": "dist/main.umd.js",
-  "module": "dist/main.modern.module.js",
-  "unpkg": "dist/main.umd.js",
-  "types": "dist/main.d.ts",
+  "source": "src/main.js",
+  "main": "src/main.js",
+  "//types": "dist/main.d.ts",
   "keywords": [
-    "microbundle",
-    "typescript"
+    "alpinejs",
+    "testing",
+    "jsdom"
   ],
   "files": [
-    "dist/**.js*",
-    "dist/**/*.ts"
+    "src/**.js*"
   ],
   "scripts": {
-    "build": "microbundle --define PKG_VERSION=$npm_package_version",
-    "watch": "microbundle watch --define PKG_VERSION=$npm_package_version",
     "test": "ava",
     "lint": "xo src tests",
     "format": "xo src tests --fix",
     "prepack": "rm -rf dist && yarn build",
     "release": "yarn prepack && source .env && np"
   },
+  "peerDependencies": {
+    "alpinejs": "^2.3.1"
+  },
+  "dependencies": {
+    "jsdom": "^16.2.2"
+  },
   "devDependencies": {
+    "alpinejs": "^2.3.1",
     "ava": "^3.7.0",
     "esm": "^3.2.25",
-    "microbundle": "^0.11.0",
     "np": "^6.2.1",
     "xo": "^0.30.0"
   },
@@ -35,7 +37,9 @@
     "prettier": true,
     "space": true,
     "globals": [],
-    "rules": {}
+    "rules": {
+      "unicorn/prefer-text-content": 0
+    }
   },
   "ava": {
     "require": [
@@ -43,7 +47,6 @@
     ]
   },
   "license": "MIT",
-  "dependencies": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
@@ -52,11 +55,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HugoDF/microbundle-ts-pkg.git"
+    "url": "git+https://github.com/HugoDF/alpine-test-utils.git"
   },
   "author": "Hugo",
   "bugs": {
-    "url": "https://github.com/HugoDF/microbundle-ts-pkg/issues"
+    "url": "https://github.com/HugoDF/alpine-test-utils/issues"
   },
-  "homepage": "https://github.com/HugoDF/microbundle-ts-pkg#readme"
+  "homepage": "https://github.com/HugoDF/alpine-test-utils#readme"
 }
