@@ -65,7 +65,7 @@ Here's an example to render a simple Alpine.js component using Jest/Jasmine synt
 import {render} from 'alpine-test-utils';
 
 test('test foo component', () => {
-  const componentHtml = `<div x-data="{foo: 'hello'}">
+  const componentHtml = `<div x-data="{foo: 'bar'}">
     <span x-text="foo"></span>
   </div>`
   const component = render(componentHtml);
