@@ -20,6 +20,12 @@ declare function setMutationObserver(mutationObserver: (...params: any[]) => any
 declare function config(): void;
 
 /**
+ * Get x-data (Alpine) component(s) from markup
+ * @param markup - markup to load
+ */
+declare function getComponents(markup: string): string[] | string;
+
+/**
  * Load markup from a file asynchronously using a path.
  * @param filePath - Path to the HTML/template file to load components from
  */
@@ -53,4 +59,10 @@ declare function render(markup: string, data?: any | string): AlpineElement;
  * Function to wait until a render/async operation complete
  */
 declare function $nextTick(): Promise<void>;
+
+/**
+ * @param document - document from which Alpine components are being loaded from
+ * @param alpineVersion - Alpine.js version from NPM
+ */
+declare function checkVersionMismatch(document: Document, alpineVersion: string): void;
 
