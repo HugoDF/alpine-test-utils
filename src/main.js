@@ -8,7 +8,14 @@ const {config, setGlobal, setMutationObserver} = require('./config');
 // Needs to happen before loading Alpine
 config();
 
-const Alpine = require('alpinejs');
+let Alpine;
+try {
+  Alpine = require('alpinejs');
+} catch (_) {
+  throw new Error(
+    "Alpine.js npm module ('alpinejs') not found - try installing it with `npm install --save-dev alpinejs`"
+  );
+}
 
 const getComponents = (markup) => {
   const {document} = new JSDOM(markup).window;
