@@ -4,6 +4,7 @@ const {promisify} = require('util');
 const readFile = promisify(fs.readFile);
 const {JSDOM} = require('jsdom');
 const {config, setGlobal, setMutationObserver} = require('./config');
+const {checkVersionMismatch} = require('./version-mismatch');
 
 // Needs to happen before loading Alpine
 config();
@@ -17,8 +18,21 @@ try {
   );
 }
 
+// Not great, but makes sure we know the version of Alpine.js loaded from NPM.
+// Safe to do here because if Alpine.js wasn't in node_modules
+// we would have already thrown (see above).
+const {version: AlpineVersion} = require('alpinejs/package.json');
+
+/**
+ * Get x-data (Alpine) component(s) from markup
+ * @param {string} markup - markup to load
+ * @returns {Array<string>|string}
+ */
 const getComponents = (markup) => {
   const {document} = new JSDOM(markup).window;
+
+  checkVersionMismatch(document, AlpineVersion);
+
   const components = [...document.querySelectorAll('[x-data]')].map(
     (element) => element.outerHTML
   );
