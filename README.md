@@ -1,5 +1,5 @@
 ![test](https://github.com/HugoDF/alpine-test-utils/workflows/test/badge.svg)
-![npm version](https://img.shields.io/npm/v/alpine-test-utils).
+![npm version](https://img.shields.io/npm/v/alpine-test-utils)
 # Alpine.js Test Utils
 
 Utilities for testing Alpine.js components.
