@@ -12,7 +12,7 @@ config();
 let Alpine;
 try {
   Alpine = require('alpinejs');
-} catch (_) {
+} catch {
   throw new Error(
     "Alpine.js npm module ('alpinejs') not found - try installing it with `npm install --save-dev alpinejs`"
   );
