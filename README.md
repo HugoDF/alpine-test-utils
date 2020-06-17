@@ -31,7 +31,7 @@ This project is not officially affiliated with Alpine.js, it's maintained by com
 
 ## Prerequisites
 
-- Node.js version 10 or 12
+- Node.js version 10, 12 or 14
 
 ## Install Package
 
