@@ -1,5 +1,5 @@
 import test from 'ava';
-import {render} from '../src/main';
+import {render} from '../../src/main';
 
 test('render - sanity check', (t) => {
   const component = render(`<div x-data="{ foo: 'bar' }">

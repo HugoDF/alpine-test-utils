@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load, loadSync} from '../src/main';
+import {load, loadSync} from '../../src/main';
 
 test('load - file with multiple components', async (t) => {
   const components = await load(

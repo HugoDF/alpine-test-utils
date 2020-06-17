@@ -14,7 +14,7 @@
     "src/**.js*"
   ],
   "scripts": {
-    "test": "ava",
+    "test": "ava 'tests/unit/*.js' 'tests/ava/*.js' && jest tests/jest",
     "build": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
     "lint": "xo src tests",
     "format": "xo src tests --fix",
@@ -38,7 +38,10 @@
   "xo": {
     "prettier": true,
     "space": true,
-    "globals": [],
+    "globals": [
+      "jest",
+      "document"
+    ],
     "rules": {
       "unicorn/prefer-text-content": 0
     }

@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load, loadSync, render, setGlobal} from '../src/main';
+import {load, loadSync, render, setGlobal} from '../../src/main';
 
 test('use-case - clicking a button to toggle visibility', async (t) => {
   const component = render(`<div x-data="{ isOpen: false }">

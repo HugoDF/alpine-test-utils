@@ -90,16 +90,20 @@ function render(markup, data) {
 
   // Create new window/document from html
   const {window} = new JSDOM(markup);
-  const {document} = window;
+  const {document: _document} = window;
+
+  const isJestWithJSDOM =
+    // @ts-ignore
+    typeof jest !== 'undefined' && typeof document !== 'undefined';
 
   // Alpine.start looks at `document`
   // set and unset current document before/after respectively
   setGlobal({
     window,
-    document
+    document: _document
   });
 
-  const component = document.querySelector('[x-data]');
+  let component = _document.querySelector('[x-data]');
   if (data) {
     component.setAttribute(
       'x-data',
@@ -107,10 +111,15 @@ function render(markup, data) {
     );
   }
 
+  if (isJestWithJSDOM) {
+    document.body.innerHTML = component.outerHTML;
+    component = document.body;
+  }
+
   Alpine.start();
+
   // @ts-ignore
-  Object.assign(component, component.__x, {$nextTick});
-  return component;
+  return Object.assign(component, component.__x, {$nextTick});
 }
 
 /**
