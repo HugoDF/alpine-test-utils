@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load} from '../src/main';
+import {load} from '../../src/main';
 import Alpine from 'alpinejs';
 
 const stub = (fn) => {
