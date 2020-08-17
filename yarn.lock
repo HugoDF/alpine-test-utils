@@ -849,9 +849,9 @@ ajv@^6.5.5:
     uri-js "^4.2.2"
 
 alpinejs@^2.3.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.5.0.tgz#16ee1a01d4a53410646a06c0e2c169341ade84c3"
-  integrity sha512-jGm3Q++iZyr9ORj6ztdraqk1mdS8C+nKyFzQcAoYJUcsY+F1vvIELHtvj6j2UU9r/DIgQXN4tQEvqwr6kXaqJw==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.6.0.tgz#0ff340e51e632fa4ed25f1c4ee0ce2515bd77491"
+  integrity sha512-4cW3zU17JIYzq6uS3asozwKIMVe5A7wrIfn3o0SNsH1YZ4D3cR2Cs+YThvf4dU3/O7EBzExBY4Dhd8LjtCnEqA==
 
 ansi-align@^3.0.0:
   version "3.0.0"
