@@ -113,7 +113,7 @@ function render(markup, data) {
 
   if (isJestWithJSDOM) {
     document.body.innerHTML = component.outerHTML;
-    component = document.body;
+    component = document.body.querySelector('[x-data]');
   }
 
   Alpine.start();
