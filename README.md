@@ -83,6 +83,7 @@ For more complex use cases, please see [USE_CASES.md](./USE_CASES.md) or for the
 | [render](#render) | Render & run Alpine.js component markup |
 | [load](#loadloadsync) | Extract Alpine.js component markup from files |
 | [loadSync](#loadloadsync) | Synchronous variant of `load` |
+| [waitFor](#waitfor) | Wait for an assertion to pass |
 | [$nextTick](#nexttick) | Wait for a re-render or async work to happen |
 | [setGlobal](#setglobal) | Override globals using an object |
 | [setMutationObserver](#setmutationobserver) | Set a custom MutationObserver implementation |
@@ -137,7 +138,40 @@ test('my test', async () => {
 });
 ```
 
+## waitFor
+
+Wait until assertions pass, wrapper for [wait-for-expect](https://github.com/TheBrainFamily/wait-for-expect).
+
+Parameters: 
+
+- callback containing the assertions. "predicate" that has to complete without throwing
+- timeout - Optional, Number - Maximum wait interval, 4500ms by default
+- interval - Optional, Number - Wait interval, 50ms by default
+
+Returns: Promise that resolves/rejects based on whether the assertions eventually pass.
+
+
+Usage example: for more advanced use-cases see [Clicking a button to toggle visibility](./USE_CASES.md#clicking-a-button-to-toggle-visibility) and [Intercepting `fetch` calls & waiting for re-renders](./USE_CASES.md#intercepting-fetch-calls--waiting-for-re-renders)
+
+```js
+test('clicking a button to toggle visibility', async () => {
+  const component = render(`<div x-data="{ isOpen: false }">
+    <button @click="isOpen = !isOpen"></button>
+    <span x-show="isOpen"></span>
+  </div>`);
+
+  expect(component.querySelector('span').style.display).toEqual('none');
+  component.querySelector('button').click();
+  await waitFor(() => {
+    expect(component.querySelector('span').style.display).toEqual('');
+  });
+});
+```
+
+
 ## $nextTick
+
+> Note: prefer [`waitFor`](#waitfor) it's more flexible and accurate.
 
 Function to wait until a render/async operation happens.
 
@@ -148,8 +182,6 @@ Returns:
 - a Promise that resolves after the next async operation has completed (ie. on the next tick of the event loop)
 
 > Note this exported as a global from the Alpine Test Utils module _and_ is attached to components during `render`, see [render](#render).
-
-Usage example: for more advanced use-cases see [Clicking a button to toggle visibility](./USE_CASES.md#clicking-a-button-to-toggle-visibility) and [Intercepting `fetch` calls & waiting for re-renders](./USE_CASES.md#intercepting-fetch-calls--waiting-for-re-renders)
 
 ```js
 test('clicking a button to toggle visibility', async () => {

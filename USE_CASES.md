@@ -12,7 +12,7 @@ This documentation provides examples for specific use cases in Node.js. Please [
 
 ```js
 import test from 'ava';
-import {render} from 'alpine-test-utils';
+import {render, waitFor} from 'alpine-test-utils';
 
 test('use-case - clicking a button to toggle visibility', async (t) => {
   const component = render(`<div x-data="{ isOpen: false }">
@@ -22,8 +22,9 @@ test('use-case - clicking a button to toggle visibility', async (t) => {
 
   t.is(component.querySelector('span').style.display, 'none');
   component.querySelector('button').click();
-  await component.$nextTick();
-  t.is(component.querySelector('span').style.display, '');
+  await waitFor(() => {
+    t.is(component.querySelector('span').style.display, '');
+  });
 });
 ```
 
@@ -31,7 +32,7 @@ test('use-case - clicking a button to toggle visibility', async (t) => {
 
 ```js
 import test from 'ava';
-import {render, setGlobal} from 'alpine-test-utils';
+import {render, setGlobal, waitFor} from 'alpine-test-utils';
 
 test('use-case - intercepting fetch calls', async (t) => {
   setGlobal({
@@ -51,14 +52,15 @@ test('use-case - intercepting fetch calls', async (t) => {
     </template>
   </div>`);
   // Flushes the Promises
-  await component.$nextTick();
-  t.deepEqual(component.$data.data, ['data-1', 'data-2']);
-  // Lets the re-render run
-  await component.$nextTick();
-  const textNodes = component.querySelectorAll('[data-testid=text-el]');
-  t.is(textNodes.length, 2);
-  t.is(textNodes[0].innerText, 'data-1');
-  t.is(textNodes[1].innerText, 'data-2');
+  await waitFor(() => {
+    t.deepEqual(component.$data.data, ['data-1', 'data-2']);
+  })
+  await waitFor(() => {
+    const textNodes = component.querySelectorAll('[data-testid=text-el]');
+    t.is(textNodes.length, 2);
+    t.is(textNodes[0].innerText, 'data-1');
+    t.is(textNodes[1].innerText, 'data-2');
+  });
 });
 ```
 
