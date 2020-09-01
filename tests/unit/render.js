@@ -1,43 +1,44 @@
-import test from 'ava';
+import {test} from 'uvu';
+import * as assert from 'uvu/assert';
 import {render} from '../../src/main';
 
-test('render - sanity check', (t) => {
+test('render - sanity check', () => {
   const component = render(`<div x-data="{ foo: 'bar' }">
     <span x-text="foo"></span>
   </div>`);
-  t.is(component.querySelector('span').innerText, 'bar');
+  assert.is(component.querySelector('span').innerText, 'bar');
 });
 
-test('render - can override x-data if data option is passed - string', (t) => {
+test('render - can override x-data if data option is passed - string', () => {
   const component = render(
     `<div x-data="{ foo: 'bar' }">
   <span x-text="foo"></span>
 </div>`,
     '{ "foo": "baz" }'
   );
-  t.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').innerText, 'baz');
 });
 
-test('render - can override x-data if data option is passed - object', (t) => {
+test('render - can override x-data if data option is passed - object', () => {
   const component = render(
     `<div x-data="{ foo: 'bar' }">
   <span x-text="foo"></span>
 </div>`,
     {foo: 'baz'}
   );
-  t.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').innerText, 'baz');
 });
 
-test('render - sets $data properties on the component', (t) => {
+test('render - sets $data properties on the component', () => {
   const component = render(
     `<div x-data="{ foo: 'bar' }">
   <span x-text="foo"></span>
 </div>`
   );
-  t.is(component.$data.foo, 'bar');
+  assert.is(component.$data.foo, 'bar');
 });
 
-test('render - updating $data works', async (t) => {
+test('render - updating $data works', async () => {
   const component = render(
     `<div x-data="{ foo: 'bar' }">
   <span x-text="foo"></span>
@@ -47,24 +48,22 @@ test('render - updating $data works', async (t) => {
   component.$data.foo = 'baz';
 
   await component.$nextTick();
-  t.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').innerText, 'baz');
 });
 
-test('render - sets $el on the component to itself', (t) => {
+test('render - sets $el on the component to itself', () => {
   const component = render(
     `<div x-data="{ foo: 'bar' }">
   <span x-text="foo"></span>
 </div>`
   );
-  t.is(component.$el, component);
+  assert.is(component.$el, component);
 });
 
-test('render throws if passed a Promise (eg. forgot to await load())', async (t) => {
-  const error = await t.throws(() => {
+test('render throws if passed a Promise (eg. forgot to await load())', async () => {
+  assert.throws(() => {
     render(Promise.resolve('<div x-data=""></div>'));
-  });
-  t.is(
-    error.message,
-    'alpine-test-utils render(): "markup" should be a string'
-  );
+  }, 'alpine-test-utils render(): "markup" should be a string');
 });
+
+test.run();
