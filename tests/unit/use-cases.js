@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load, loadSync, render, setGlobal} from '../../src/main';
+import {load, loadSync, render, setGlobal, waitFor} from '../../src/main';
 
 test('use-case - clicking a button to toggle visibility', async (t) => {
   const component = render(`<div x-data="{ isOpen: false }">
@@ -14,7 +14,7 @@ test('use-case - clicking a button to toggle visibility', async (t) => {
   t.is(component.querySelector('span').style.display, '');
 });
 
-test('use-case - intercepting fetch calls', async (t) => {
+test('use-case - intercepting fetch calls - $nextTick', async (t) => {
   setGlobal({
     fetch: () =>
       Promise.resolve({
@@ -40,6 +40,34 @@ test('use-case - intercepting fetch calls', async (t) => {
   t.is(textNodes.length, 2);
   t.is(textNodes[0].innerText, 'data-1');
   t.is(textNodes[1].innerText, 'data-2');
+});
+
+test('use-case - intercepting fetch calls - wait-for-expect', async (t) => {
+  setGlobal({
+    fetch: () =>
+      Promise.resolve({
+        json: () => Promise.resolve(['data-1', 'data-2'])
+      })
+  });
+  const component = render(`<div
+    x-data="{ data: [] }"
+    x-init="fetch().then(r => r.json()).then(d => {
+      data = d;
+    })"
+  >
+    <template x-for="d in data" :key="d">
+      <span data-testid="text-el" x-text="d"></span>
+    </template>
+  </div>`);
+  await waitFor(() => {
+    t.deepEqual(component.$data.data, ['data-1', 'data-2']);
+  });
+  await waitFor(() => {
+    const textNodes = component.querySelectorAll('[data-testid=text-el]');
+    t.is(textNodes.length, 2);
+    t.is(textNodes[0].innerText, 'data-1');
+    t.is(textNodes[1].innerText, 'data-2');
+  });
 });
 
 test('use-case - PHP template - async', async (t) => {

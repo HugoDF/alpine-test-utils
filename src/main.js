@@ -1,5 +1,6 @@
 // @ts-check
 const fs = require('fs');
+const waitFor = require('wait-for-expect');
 const {promisify} = require('util');
 const readFile = promisify(fs.readFile);
 const {JSDOM} = require('jsdom');
@@ -139,5 +140,6 @@ module.exports = {
   setGlobal,
   load,
   loadSync,
-  render
+  render,
+  waitFor
 };
