@@ -1,8 +1,9 @@
 import test from 'ava';
 import path from 'path';
 import {load, loadSync, render, setGlobal, waitFor} from '../../src/main';
+console.warn = () => {};
 
-test('use-case - clicking a button to toggle visibility', async (t) => {
+test('[deprecated] use-case - clicking a button to toggle visibility', async (t) => {
   const component = render(`<div x-data="{ isOpen: false }">
     <button @click="isOpen = !isOpen"></button>
     <span x-show="isOpen"></span>
@@ -14,7 +15,20 @@ test('use-case - clicking a button to toggle visibility', async (t) => {
   t.is(component.querySelector('span').style.display, '');
 });
 
-test('use-case - intercepting fetch calls - $nextTick', async (t) => {
+test('use-case - clicking a button to toggle visibility', async (t) => {
+  const component = render(`<div x-data="{ isOpen: false }">
+    <button @click="isOpen = !isOpen"></button>
+    <span x-show="isOpen"></span>
+  </div>`);
+
+  t.is(component.querySelector('span').style.display, 'none');
+  component.querySelector('button').click();
+  await waitFor(() => {
+    t.is(component.querySelector('span').style.display, '');
+  });
+});
+
+test('[deprecated] use-case - intercepting fetch calls - $nextTick', async (t) => {
   setGlobal({
     fetch: () =>
       Promise.resolve({
@@ -42,7 +56,7 @@ test('use-case - intercepting fetch calls - $nextTick', async (t) => {
   t.is(textNodes[1].innerText, 'data-2');
 });
 
-test('use-case - intercepting fetch calls - wait-for-expect', async (t) => {
+test('use-case - intercepting fetch calls - waitFor', async (t) => {
   setGlobal({
     fetch: () =>
       Promise.resolve({

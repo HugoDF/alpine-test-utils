@@ -20,6 +20,12 @@ test('load - file with single component', async (t) => {
 });
 
 test('loadSync - file with multiple components', (t) => {
+  const calls = [];
+  const realWarn = console.warn;
+  console.warn = (...args) => {
+    calls.push(args);
+  };
+
   const components = loadSync(
     path.join(__dirname, '../fixtures/multiple-components.html')
   );
@@ -27,11 +33,31 @@ test('loadSync - file with multiple components', (t) => {
   t.is(components[0], `<div x-data="" name="component-1"></div>`);
   t.is(components[1], `<div x-data="" name="component-2"></div>`);
   t.is(components[2], `<div x-data="" name="component-3"></div>`);
+  // Check warning
+  t.deepEqual(calls, [
+    [
+      'alpine-test-utils: loadSync() can cause performance issues, prefer async "load()"'
+    ]
+  ]);
+  console.warn = realWarn;
 });
 
 test('loadSync - file with single component', (t) => {
+  const calls = [];
+  const realWarn = console.warn;
+  console.warn = (...args) => {
+    calls.push(args);
+  };
+
   const component = loadSync(
     path.join(__dirname, '../fixtures/single-component.html')
   );
   t.is(component, `<div x-data="" name="component-1"></div>`);
+  // Check warning
+  t.deepEqual(calls, [
+    [
+      'alpine-test-utils: loadSync() can cause performance issues, prefer async "load()"'
+    ]
+  ]);
+  console.warn = realWarn;
 });
