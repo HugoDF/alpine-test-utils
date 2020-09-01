@@ -16,7 +16,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: c-hive/gha-yarn-cache@v1
+    - name: Cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
     - name: yarn install
       run: yarn
     - name: lint
@@ -27,7 +32,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x]
         suite: ['unit', 'ava', 'jest', 'uvu', 'tape']
 
     env:
@@ -39,7 +44,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: c-hive/gha-yarn-cache@v1
+    - name: Cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
     - name: yarn install --frozen-lockfile
       run: yarn
     - name: test:${{ matrix.suite }}
