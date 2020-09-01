@@ -14,7 +14,11 @@
     "src/**.js*"
   ],
   "scripts": {
-    "test": "ava 'tests/unit/*.js' 'tests/ava/*.js' && jest tests/jest && uvu tests/uvu -r esm",
+    "test:unit": "uvu tests/unit -r esm",
+    "test:ava": "ava 'tests/ava/*.js'",
+    "test:uvu": "uvu tests/uvu -r esm",
+    "test:jest": "jest tests/jest",
+    "test": "yarn test:unit && yarn test:uvu && yarn test:ava && yarn test:jest",
     "build": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
     "lint": "xo src tests",
     "fmt": "xo src tests --fix",
