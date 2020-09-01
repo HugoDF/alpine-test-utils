@@ -128,7 +128,9 @@ function render(markup, data) {
  */
 async function $nextTick() {
   // eslint-disable-next-line no-unused-vars
-  await new Promise((resolve, reject) => setTimeout(resolve, 0));
+  await new Promise((resolve, reject) => {
+    setTimeout(resolve, 0);
+  });
 }
 
 module.exports = {

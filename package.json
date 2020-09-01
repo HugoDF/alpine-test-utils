@@ -17,7 +17,8 @@
     "test": "ava 'tests/unit/*.js' 'tests/ava/*.js' && jest tests/jest && uvu tests/uvu -r esm",
     "build": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
     "lint": "xo src tests",
-    "format": "xo src tests --fix",
+    "fmt": "xo src tests --fix",
+    "format": "yarn fmt",
     "release": "yarn build && np"
   },
   "peerDependencies": {
@@ -35,7 +36,7 @@
     "np": "^6.2.1",
     "tsd-jsdoc": "^2.5.0",
     "uvu": "^0.3.3",
-    "xo": "^0.32.0"
+    "xo": "^0.33.1"
   },
   "xo": {
     "prettier": true,
