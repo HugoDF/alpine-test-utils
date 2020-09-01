@@ -33,7 +33,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-        suite: ['unit', 'ava', 'jest', 'uvu', 'tape']
+        # suite: ['unit', 'ava', 'jest', 'uvu', 'tape']
 
     env:
       CI: true
@@ -52,5 +52,7 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
     - name: yarn install --frozen-lockfile
       run: yarn
-    - name: test:${{ matrix.suite }}
-      run: yarn test:${{ matrix.suite }}
+    - name: test
+      run: yarn test
+    # - name: test:${{ matrix.suite }}
+    #   run: yarn test:${{ matrix.suite }}
