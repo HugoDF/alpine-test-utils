@@ -3,13 +3,32 @@ name: test
 on: [push]
 
 jobs:
-  lint_build_test:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    env:
+      CI: true
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: c-hive/gha-yarn-cache@v1
+    - name: yarn install
+      run: yarn
+    - name: lint
+      run: yarn lint
 
+  test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
+        suite: ['unit', 'ava', 'jest', 'uvu', 'tape']
 
     env:
       CI: true
@@ -23,7 +42,5 @@ jobs:
     - uses: c-hive/gha-yarn-cache@v1
     - name: yarn install --frozen-lockfile
       run: yarn
-    - name: lint
-      run: yarn lint
-    - name: test
-      run: yarn test
+    - name: test:${{ matrix.suite }}
+      run: yarn test:${{ matrix.suite }}
