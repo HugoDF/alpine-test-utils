@@ -3,7 +3,7 @@ name: test
 on: [push]
 
 jobs:
-  lint:
+  lint_unit:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,6 +26,8 @@ jobs:
       run: yarn
     - name: lint
       run: yarn lint
+    - name: unit test
+      run: yarn test:unit
 
   test:
     runs-on: ubuntu-latest
@@ -33,7 +35,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-        # suite: ['unit', 'ava', 'jest', 'uvu', 'tape']
+        command: ['yarn test:uvu && yarn test:jest', 'yarn test:tape && yarn test:ava']
 
     env:
       CI: true
@@ -52,7 +54,5 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
     - name: yarn install --frozen-lockfile
       run: yarn
-    - name: test
-      run: yarn test
-    # - name: test:${{ matrix.suite }}
-    #   run: yarn test:${{ matrix.suite }}
+    - name: test section
+      run: ${{ matrix.command }}
