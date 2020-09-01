@@ -17,8 +17,9 @@
     "test:unit": "uvu tests/unit -r esm",
     "test:ava": "ava 'tests/ava/*.js'",
     "test:uvu": "uvu tests/uvu -r esm",
+    "test:tape": "tape tests/tape/*.js -r esm",
     "test:jest": "jest tests/jest",
-    "test": "yarn test:unit && yarn test:uvu && yarn test:ava && yarn test:jest",
+    "test": "yarn test:unit && yarn test:uvu && yarn test:tape && yarn test:ava && yarn test:jest",
     "build": "jsdoc -t node_modules/tsd-jsdoc/dist -r src -d .",
     "lint": "xo src tests",
     "fmt": "xo src tests --fix",
@@ -39,6 +40,7 @@
     "jest": "^26.0.1",
     "jsdoc": "^3.6.4",
     "np": "^6.2.1",
+    "tape": "^5.0.1",
     "tsd-jsdoc": "^2.5.0",
     "uvu": "^0.3.3",
     "xo": "^0.33.1"
