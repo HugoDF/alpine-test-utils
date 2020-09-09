@@ -37,7 +37,7 @@ test('use-case - intercepting fetch calls - waitFor', async () => {
   await waitFor(() => {
     const textNodes = component.querySelectorAll('[data-testid=text-el]');
     expect(textNodes).toHaveLength(2);
-    expect(textNodes[0].innerText).toEqual('data-1');
-    expect(textNodes[1].innerText).toEqual('data-2');
+    expect(textNodes[0].textContent).toEqual('data-1');
+    expect(textNodes[1].textContent).toEqual('data-2');
   });
 });

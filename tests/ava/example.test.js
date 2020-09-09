@@ -6,12 +6,12 @@ test('render - example', (t) => {
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml);
-  t.is(component.querySelector('span').innerText, 'bar');
+  t.is(component.querySelector('span').textContent, 'bar');
 });
 test('render - override sanity check', (t) => {
   const componentHtml = `<div x-data="{}">
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml, {foo: 'baz'});
-  t.is(component.querySelector('span').innerText, 'baz');
+  t.is(component.querySelector('span').textContent, 'baz');
 });

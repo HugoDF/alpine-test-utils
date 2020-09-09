@@ -6,7 +6,7 @@ test('render - sanity check', () => {
   const component = render(`<div x-data="{ foo: 'bar' }">
     <span x-text="foo"></span>
   </div>`);
-  assert.is(component.querySelector('span').innerText, 'bar');
+  assert.is(component.querySelector('span').textContent, 'bar');
 });
 
 test('render - can override x-data if data option is passed - string', () => {
@@ -16,7 +16,7 @@ test('render - can override x-data if data option is passed - string', () => {
 </div>`,
     '{ "foo": "baz" }'
   );
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('render - can override x-data if data option is passed - object', () => {
@@ -26,7 +26,7 @@ test('render - can override x-data if data option is passed - object', () => {
 </div>`,
     {foo: 'baz'}
   );
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('render - sets $data properties on the component', () => {
@@ -48,7 +48,7 @@ test('render - updating $data works', async () => {
   component.$data.foo = 'baz';
 
   await component.$nextTick();
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('render - sets $el on the component to itself', () => {

@@ -55,8 +55,8 @@ test('[deprecated] use-case - intercepting fetch calls - $nextTick', async (t) =
   await component.$nextTick();
   const textNodes = component.querySelectorAll('[data-testid=text-el]');
   t.is(textNodes.length, 2);
-  t.is(textNodes[0].innerText, 'data-1');
-  t.is(textNodes[1].innerText, 'data-2');
+  t.is(textNodes[0].textContent, 'data-1');
+  t.is(textNodes[1].textContent, 'data-2');
 });
 
 test('use-case - intercepting fetch calls - waitFor', async (t) => {
@@ -83,8 +83,8 @@ test('use-case - intercepting fetch calls - waitFor', async (t) => {
   await waitFor(() => {
     const textNodes = component.querySelectorAll('[data-testid=text-el]');
     t.is(textNodes.length, 2);
-    t.is(textNodes[0].innerText, 'data-1');
-    t.is(textNodes[1].innerText, 'data-2');
+    t.is(textNodes[0].textContent, 'data-1');
+    t.is(textNodes[1].textContent, 'data-2');
   });
 });
 
@@ -95,7 +95,7 @@ test('use-case - PHP template - async', async (t) => {
   const component = render(markup, {
     foo: 'baz'
   });
-  t.is(component.querySelector('span').innerText, 'baz');
+  t.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('use-case - PHP template - sync', (t) => {
@@ -105,19 +105,19 @@ test('use-case - PHP template - sync', (t) => {
   const component = render(markup, {
     foo: 'baz'
   });
-  t.is(component.querySelector('span').innerText, 'baz');
+  t.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('use-case - load from HTML file - async', async (t) => {
   t.plan(1);
   const markup = await load(path.join(__dirname, '../fixtures/template.html'));
   const component = render(markup);
-  t.is(component.querySelector('span').innerText, 'bar');
+  t.is(component.querySelector('span').textContent, 'bar');
 });
 
 test('use-case - load from HTML file - sync', (t) => {
   t.plan(1);
   const markup = loadSync(path.join(__dirname, '../fixtures/template.html'));
   const component = render(markup);
-  t.is(component.querySelector('span').innerText, 'bar');
+  t.is(component.querySelector('span').textContent, 'bar');
 });
