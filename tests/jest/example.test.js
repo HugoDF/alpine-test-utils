@@ -6,7 +6,7 @@ test('render - example', () => {
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml);
-  expect(component.querySelector('span').innerText).toEqual('bar');
+  expect(component.querySelector('span').textContent).toEqual('bar');
 });
 
 test('render - override sanity check', () => {
@@ -14,5 +14,5 @@ test('render - override sanity check', () => {
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml, {foo: 'baz'});
-  expect(component.querySelector('span').innerText).toEqual('baz');
+  expect(component.querySelector('span').textContent).toEqual('baz');
 });

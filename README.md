@@ -70,7 +70,7 @@ test('test foo component', () => {
     <span x-text="foo"></span>
   </div>`
   const component = render(componentHtml);
-  expect(component.querySelector('span').innerText).toEqual('bar');
+  expect(component.querySelector('span').textContent).toEqual('bar');
 });
 ```
 
@@ -108,7 +108,7 @@ test('component renders content of "foo" in span', () => {
   const component = render(`<div x-data="{ foo: 'bar' }">
     <span x-text="foo"></span>
   </div>`);
-  expect(component.querySelector('span').innerText).toEqual('bar');
+  expect(component.querySelector('span').textContent).toEqual('bar');
 });
 ```
 

@@ -7,14 +7,14 @@ test('render - example', () => {
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml);
-  assert.is(component.querySelector('span').innerText, 'bar');
+  assert.is(component.querySelector('span').textContent, 'bar');
 });
 test('render - override sanity check', () => {
   const componentHtml = `<div x-data="{}">
     <span x-text="foo"></span>
   </div>`;
   const component = render(componentHtml, {foo: 'baz'});
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test.run();

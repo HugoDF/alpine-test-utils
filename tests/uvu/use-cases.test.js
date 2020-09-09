@@ -40,8 +40,8 @@ test('use-case - intercepting fetch calls', async () => {
   await waitFor(() => {
     const textNodes = component.querySelectorAll('[data-testid=text-el]');
     assert.is(textNodes.length, 2);
-    assert.is(textNodes[0].innerText, 'data-1');
-    assert.is(textNodes[1].innerText, 'data-2');
+    assert.is(textNodes[0].textContent, 'data-1');
+    assert.is(textNodes[1].textContent, 'data-2');
   });
 });
 
@@ -51,7 +51,7 @@ test('use-case - PHP template - async', async () => {
   const component = render(markup, {
     foo: 'baz'
   });
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('use-case - PHP template - sync', () => {
@@ -60,19 +60,19 @@ test('use-case - PHP template - sync', () => {
   const component = render(markup, {
     foo: 'baz'
   });
-  assert.is(component.querySelector('span').innerText, 'baz');
+  assert.is(component.querySelector('span').textContent, 'baz');
 });
 
 test('use-case - load from HTML file - async', async () => {
   const markup = await load(path.join(__dirname, '../fixtures/template.html'));
   const component = render(markup);
-  assert.is(component.querySelector('span').innerText, 'bar');
+  assert.is(component.querySelector('span').textContent, 'bar');
 });
 
 test('use-case - load from HTML file - sync', () => {
   const markup = loadSync(path.join(__dirname, '../fixtures/template.html'));
   const component = render(markup);
-  assert.is(component.querySelector('span').innerText, 'bar');
+  assert.is(component.querySelector('span').textContent, 'bar');
 });
 
 test.run();
