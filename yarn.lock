@@ -8073,9 +8073,9 @@ xmlcreate@^2.0.3:
   integrity sha512-HgS+X6zAztGa9zIK3Y3LXuJes33Lz9x+YyTxgrkIdabu2vqcGOWwdfCpf1hWLRrd553wd4QCDf6BBO6FfdsRiQ==
 
 xo@^0.34.0:
-  version "0.34.1"
-  resolved "https://registry.yarnpkg.com/xo/-/xo-0.34.1.tgz#0a0933fe864b654ca35cbfb71f18a7b4b9b357b6"
-  integrity sha512-i8ChTBFNZjzZ26gCoxVxDQ5yBfKAmJyKAzfPfiTvGLezqeWEdj6t/MmOEFi3nJFQzsX1rzBBRbBBgNicbcn8sA==
+  version "0.34.2"
+  resolved "https://registry.yarnpkg.com/xo/-/xo-0.34.2.tgz#5b756364a017830795edfb2332d5410628c2c253"
+  integrity sha512-GhCUAx99ExfHMXFqcmLfHg8G81NP87GouJcoEozdjxQDph2x3MQ9EIFWbCiowwOJRYb22VS5F3s+urp1eP6gBg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.4.1"
     "@typescript-eslint/parser" "^4.4.1"
