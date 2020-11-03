@@ -7813,9 +7813,9 @@ uuid@^8.3.0:
   integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
 uvu@^0.3.3:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.3.4.tgz#fb629901ce84c7d267617de62a307cec87ec9a6f"
-  integrity sha512-UM8M8r+85jYdwn4XII8cjQTojRAkNIaB3kA6FRXX0dQTDAE2NfWs0hLcLJm9/XL1aIFwhSp05vDfDDBlpnZgcg==
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.3.5.tgz#768b40dccff2bda7b9b9b9386a1b929446a58ce0"
+  integrity sha512-kcRdf1Lt4MeU70UsyIjqKq1NHau4IMW6VTLpWsSab3Xb3JbDBymCrLrWQmjMfXSG3AEmWW7TRlkIOkI8N8rQ/A==
   dependencies:
     dequal "^2.0.0"
     diff "^4.0.2"
