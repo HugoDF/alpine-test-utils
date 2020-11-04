@@ -7826,10 +7826,10 @@ uuid@^8.3.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
   integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
-uvu@^0.3.3:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.3.5.tgz#768b40dccff2bda7b9b9b9386a1b929446a58ce0"
-  integrity sha512-kcRdf1Lt4MeU70UsyIjqKq1NHau4IMW6VTLpWsSab3Xb3JbDBymCrLrWQmjMfXSG3AEmWW7TRlkIOkI8N8rQ/A==
+uvu@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.4.0.tgz#2f703a51974b372975194681351c52f82457bae2"
+  integrity sha512-yt0n87P4+A96Q5LIvARNc7WoT7cjb0HGaFZdAJFZ0PtXtzfUNV1Ktn7/edXWEUFu+7kZTDJQoyezF9jrThn8rg==
   dependencies:
     dequal "^2.0.0"
     diff "^4.0.2"
