@@ -2401,10 +2401,10 @@ diff-sequences@^26.6.2:
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-26.6.2.tgz#48ba99157de1923412eed41db6b6d4aa9ca7c0b1"
   integrity sha512-Mv/TDa3nZ9sbc5soK+OoA74BsS3mL37yixCvUAQkiuA4Wz6YtwP/K47n2rv2ovzHZvoiQeA5FTQOschKkEwB0Q==
 
-diff@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
-  integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
+diff@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-5.0.0.tgz#7ed6ad76d859d030787ec35855f5b1daf31d852b"
+  integrity sha512-/VTCrvm5Z0JGty/BWHljh+BAiw3IK+2j87NGMu8Nwc/f48WoDAC395uomO9ZD117ZOBaHmkX1oyLvkVM/aIT3w==
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
@@ -7811,13 +7811,13 @@ uuid@^8.3.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
   integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
-uvu@^0.4.0:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.4.1.tgz#a173671ac465560f6ac42239959dcd80acb5e410"
-  integrity sha512-JgAGSdts0VawIRPpnG4t1G5O0RoSrkJZTvTH+iSrFrlsJq9w12hksrfvd8wHIVAw/215T7WfQalCwYa3vN8tTA==
+uvu@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/uvu/-/uvu-0.5.0.tgz#22aca2d9e030d4ec2f5b310799447582935bb861"
+  integrity sha512-Hb4OUuwlJMShS5280r5cEE4RBH/M7xaKaNe/drTX388lEnrGdW2izSRmk4vyg2wBDaX77GBGLGA/V8XtXtMljQ==
   dependencies:
     dequal "^2.0.0"
-    diff "^4.0.2"
+    diff "^5.0.0"
     kleur "^4.0.3"
     sade "^1.7.3"
     totalist "^2.0.0"
