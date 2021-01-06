@@ -1,5 +1,5 @@
 import test from 'ava';
-import {render} from '../../src/main';
+import {render} from '../../src/main.js';
 
 test('render - example', (t) => {
   const componentHtml = `<div x-data="{foo: 'bar'}">

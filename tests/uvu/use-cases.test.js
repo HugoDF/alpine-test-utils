@@ -1,7 +1,7 @@
 import {test} from 'uvu';
 import * as assert from 'uvu/assert';
 import path from 'path';
-import {load, loadSync, render, setGlobal, waitFor} from '../../src/main';
+import {load, loadSync, render, setGlobal, waitFor} from '../../src/main.js';
 
 console.warn = () => {};
 

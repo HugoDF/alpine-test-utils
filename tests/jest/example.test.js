@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const {render} = require('../../src/main');
+const {render} = require('../../src/main.js');
 
 test('render - example', () => {
   const componentHtml = `<div x-data="{foo: 'bar'}">

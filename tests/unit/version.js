@@ -1,7 +1,7 @@
 import {test} from 'uvu';
 import * as assert from 'uvu/assert';
 import path from 'path';
-import {load} from '../../src/main';
+import {load} from '../../src/main.js';
 import Alpine from 'alpinejs';
 
 const stub = (fn) => {
