@@ -1,7 +1,7 @@
 {
   "name": "alpine-test-utils",
   "description": "Utilities for testing Alpine.js components",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "source": "src/main.js",
   "main": "src/main.js",
   "types": "types.d.ts",
