@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const {render, waitFor, setGlobal} = require('../../src/main');
+const {render, waitFor, setGlobal} = require('../../src/main.js');
 
 test('use-case - clicking a button to toggle visibility', async () => {
   const component = render(`<div x-data="{ isOpen: false }">

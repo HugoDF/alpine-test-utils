@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import {load, loadSync, render, setGlobal, waitFor} from '../../src/main';
+import {load, loadSync, render, setGlobal, waitFor} from '../../src/main.js';
 console.warn = () => {};
 
 test('[deprecated] use-case - clicking a button to toggle visibility', async (t) => {

@@ -1,5 +1,5 @@
 import test from 'tape';
-import {render} from '../../src/main';
+import {render} from '../../src/main.js';
 
 test('render - example', (t) => {
   t.plan(1);

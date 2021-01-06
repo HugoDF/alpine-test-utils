@@ -1,6 +1,6 @@
 import {test} from 'uvu';
 import * as assert from 'uvu/assert';
-import {render, waitFor} from '../../src/main';
+import {render, waitFor} from '../../src/main.js';
 
 test('waitFor - x-show toggles style.display', async () => {
   const component = render(`<div x-data="{ isOpen: false }">

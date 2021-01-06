@@ -1,6 +1,6 @@
 import {test} from 'uvu';
 import * as assert from 'uvu/assert';
-import {render} from '../../src/main';
+import {render} from '../../src/main.js';
 
 test('render - example', () => {
   const componentHtml = `<div x-data="{foo: 'bar'}">

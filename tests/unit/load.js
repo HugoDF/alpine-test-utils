@@ -1,7 +1,7 @@
 import {test} from 'uvu';
 import * as assert from 'uvu/assert';
 import path from 'path';
-import {load, loadSync} from '../../src/main';
+import {load, loadSync} from '../../src/main.js';
 
 test('load - file with multiple components', async () => {
   const components = await load(
