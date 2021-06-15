@@ -27,14 +27,14 @@
     "release": "yarn build && np"
   },
   "peerDependencies": {
-    "alpinejs": "^2.3.1"
+    "alpinejs": "^3.0.6"
   },
   "dependencies": {
     "jsdom": "^16.2.2",
     "wait-for-expect": "^3.0.2"
   },
   "devDependencies": {
-    "alpinejs": "^2.3.1",
+    "alpinejs": "^3.0.6",
     "ava": "^3.7.0",
     "esm": "^3.2.25",
     "jest": "^27.0.1",
