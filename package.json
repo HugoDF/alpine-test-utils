@@ -30,7 +30,7 @@
     "alpinejs": "^2.3.1"
   },
   "dependencies": {
-    "jsdom": "^19.0.0",
+    "jsdom": "^20.0.0",
     "wait-for-expect": "^3.0.2"
   },
   "devDependencies": {
